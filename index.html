@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#station1, #stationtext1").hover(function() {
+                $(".character").css({
+                    "left": "300px",
+                    "top": "330px"
+                });
+            })
+            $("#station2, #stationtext2").hover(function() {
+                $(".character").css({
+                    "left": "700px",
+                    "top": "430px"
+                });
+            })
+            $("#station3, #stationtext3").hover(function() {
+                $(".character").css({
+                    "left": "1100px",
+                    "top": "330px"
+                });
+            })
+            $("#station4, #stationtext4").hover(function() {
+                $(".character").css({
+                    "left": "1500px",
+                    "top": "430px"
+                });
+            })
+            $(".station, .stationtext").hover(
+                function() {
+                    $(".character").attr("src", 'tenorhover.gif');
+                },
+                function() {
+                    $(".character").attr("src", 'tenor.gif');
+                }
+            )
+
+            $("#btnuser").on("click", function() {
+                $(".popbox").fadeIn();
+            });
+
+            $(".fa-window-close").on("click", function() {
+                $(".popbox").fadeOut();
+            });
+
+            $("#btncloth").on("click", function() {
+                $(".popchanging").fadeIn();
+            });
+
+            $(".fa-window-close").on("click", function() {
+                $(".popchanging").fadeOut();
+            });
+
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css" as="style">
+    <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+        body {}
+        
+        .armorboxleft {
+            position: absolute;
+            width: 110px;
+            height: 440px;
+            top: 150px;
+            left: 80px;
+        }
+        
+        .armorboxright {
+            position: absolute;
+            width: 110px;
+            height: 440px;
+            top: 150px;
+            left: 540px;
+        }
+        
+        .armor {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #707070;
+            border-radius: 10px;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #707070;
+            background-color: white;
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .experience {
+            position: absolute;
+            width: 900px;
+            height: 700px;
+            right: 100px;
+            bottom: 50px;
+            border: 5px solid #707070;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+        
+        #aboutmelogo {
+            position: absolute;
+            color: rgb(255, 255, 255);
+            padding: 20px 30px 20px 30px;
+            background: #707070;
+            border-radius: 30px 0px 0px 0px;
+            top: -5px;
+            left: -5px;
+        }
+        
+        #aboutmelogotri {
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 125px;
+            top: -5px;
+            border-top: 60px solid transparent;
+            border-left: 50px solid #707070;
+            border-bottom: 60px solid transparent;
+        }
+        
+        .Tapcon {
+            position: absolute;
+            display: flex;
+            height: 57px;
+            width: 920px;
+            right: 90px;
+            top: 25px;
+            align-items: stretch;
+        }
+        
+        .Tap {
+            border-radius: 10px;
+            margin-right: 10px;
+            border: 5px solid #b1b1b1;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b1b1b1;
+            font-size: 20px;
+        }
+        
+        .darkgrey {
+            border-color: #707070;
+            color: #707070;
+        }
+        
+        .skilltree {
+            position: absolute;
+            width: 900px;
+            height: 700px;
+            right: 100px;
+            bottom: 50px;
+            border: 5px solid #707070;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .skilltree>div {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #707070;
+            border-radius: 5px;
+            margin: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #707070;
+            background-color: white;
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .skilltree>div .txt {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            font-size: 17px;
+            text-align: center;
+        }
+        
+        .skilltree>div .txt:hover {
+            opacity: 1;
+        }
+        
+        .box {
+            position: fixed;
+            max-width: 1900px;
+            max-height: 1000px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .popchanging {
+            position: relative;
+            max-width: 1900px;
+            max-height: 1000px;
+            z-index: 11;
+            display: none;
+        }
+        
+        .popchangingcontent {
+            position: absolute;
+            width: 1800px;
+            height: 850px;
+            border: 5px solid #707070;
+            border-radius: 20px;
+            margin: 40px;
+            background-image: url('img/roombackground.jpg');
+        }
+        
+        .popbox {
+            position: relative;
+            max-width: 1900px;
+            max-height: 1000px;
+            z-index: 11;
+            display: none;
+        }
+        
+        .popcontent {
+            position: absolute;
+            width: 1800px;
+            height: 850px;
+            border: 5px solid #707070;
+            border-radius: 20px;
+            margin: 40px;
+            background-color: rgba(255, 255, 255, 0.877);
+        }
+        
+        .background {
+            position: relative;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #ffe4e46e;
+        }
+        
+        .xlarge {
+            width: 700px;
+            height: 700px;
+            animation: move1 20s infinite;
+        }
+        
+        .large {
+            width: 600px;
+            height: 600px;
+            animation: move1 20s infinite;
+        }
+        
+        .medium {
+            width: 400px;
+            height: 400px;
+            animation: move2 40s infinite;
+        }
+        
+        .small {
+            width: 200px;
+            height: 200px;
+            animation: move1 30s infinite;
+        }
+        
+        .xsmall {
+            width: 150px;
+            height: 150px;
+            animation: move2 30s infinite;
+        }
+        
+        .station {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ffc8c8dc;
+            z-index: 2;
+        }
+        
+        .btncontainer>div {
+            width: 130px;
+            height: 130px;
+            box-shadow: 0px 0px 3px #707070;
+            border-radius: 50%;
+            color: #707070;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .btncontainer>div:hover {
+            box-shadow: 0px 0px 3px rgb(255, 133, 133);
+            color: rgb(255, 206, 206);
+            transform: translate(0, -10px);
+        }
+        
+        .btncontainer>div .txt {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            font-family: 'Nunito', sans-serif;
+            color: rgb(255, 133, 133);
+        }
+        
+        .btncontainer>div .txt:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .btncontainer {
+            position: absolute;
+            right: 50px;
+            bottom: 80px;
+            z-index: 10;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .character {
+            position: absolute;
+            left: 285px;
+            top: 330px;
+            z-index: 3;
+        }
+        
+        .stationtext {
+            position: absolute;
+            z-index: 4;
+            width: 195px;
+            height: 60px;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: rgb(255, 176, 176);
+            color: rgb(255, 255, 255);
+            font-size: 60px;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fadein {
+            animation: fadein 1s;
+        }
+        
+        .timeline {
+            width: 0px;
+            height: 1050px;
+            margin: 40px;
+            border: 5px solid #707070;
+            position: absolute;
+            left: 50px;
+            top: 20px;
+            border-radius: 5px;
+        }
+        
+        .experience .timetextbox {
+            position: absolute;
+            top: 60px;
+            left: 120px;
+            width: 200px;
+            height: 1100px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .experience .timetextbox>div {
+            border: 0px solid #707070;
+            height: 100px;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Russo One', sans-serif;
+            font-size: 25px;
+            color: #707070;
+        }
+        
+        .experience .textbox {
+            position: absolute;
+            top: 60px;
+            left: 300px;
+            width: 500px;
+            height: 1100px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .experience .textbox>div {
+            border: 0px solid #707070;
+            height: 100px;
+            margin: 20px;
+        }
+        
+        .experience .textbox>div h1 {
+            font-family: 'cwTeXYen', serif !important;
+            font-weight: 500;
+            font-size: 25px;
+            margin: 0;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #707070;
+            border: 0px solid green;
+        }
+        
+        .experience .textbox>div p {
+            padding-top: 10px;
+            margin: 0;
+            border-top: 2px solid #707070;
+            font-family: 'cwTeXYen', serif !important;
+            font-weight: 300;
+            font-size: 20px;
+            color: #707070;
+        }
+        
+        .starcon {
+            position: absolute;
+            margin-left: 80px;
+            margin-top: 90px;
+        }
+        
+        .starcon>i {
+            color: rgb(255, 185, 185);
+        }
+        
+        @keyframes fadein {
+            from {
+                opacity: 0
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes move1 {
+            0% {
+                margin-left: 0px;
+                margin-top: 0px;
+            }
+            25% {
+                margin-left: -30px;
+                margin-top: 50px;
+            }
+            50% {
+                margin-left: -50px;
+                margin-top: -23px;
+            }
+            75% {
+                margin-left: 24px;
+                margin-top: -60px;
+            }
+            100% {
+                margin-left: 0px;
+                margin-top: 0px;
+            }
+        }
+        
+        @keyframes move2 {
+            0% {
+                margin-left: 0px;
+                margin-top: 0px;
+            }
+            25% {
+                margin-left: 50px;
+                margin-top: 50px;
+            }
+            50% {
+                margin-left: 130px;
+                margin-top: 190px;
+            }
+            75% {
+                margin-left: 56px;
+                margin-top: 60px;
+            }
+            100% {
+                margin-left: 0px;
+                margin-top: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="popbox">
+        <div class="popcontent">
+            <i class="fas fa-user fa-5x" id="aboutmelogo"></i>
+            <div id="aboutmelogotri"></div>
+            <i class="fas fa-window-close fa-4x" style="position: absolute;right:-5px;top:-9px;color:#707070;"></i>
+
+            <div class="popemt">
+                <div class="armorboxleft">
+                    <div class="armor"><i class="fas fa-brain fa-3x"></i></div>
+                    <div class="armor"><i class="fas fa-handshake fa-3x"></i></div>
+                    <div class="armor"><i class="far fa-hand-paper fa-3x"></i></div>
+                    <div class="armor"><i class="fab fa-edge fa-3x"></i></div>
+                </div>
+                <div class="armorboxright">
+                    <div class="armor"><i class="fas fa-language fa-3x"></i></div>
+                    <div class="armor"><i class="fas fa-palette fa-3x"></i></div>
+                    <div class="armor"><i class="fas fa-camera-retro fa-3x"></i></div>
+                    <div class="armor"><i class="far fa-file fa-3x"></i></div>
+                </div>
+                <div class="Tapcon">
+                    <div class="Tap tablink darkgrey" onclick="Swtap(event,'skill')" style="flex-grow:1">SKILL</div>
+                    <div class="Tap tablink" onclick="Swtap(event,'experience')" style="flex-grow:1;">EXPERIENCE</div>
+                    <div class="Tap tablink" style="flex-grow:1;opacity: 0;"></div>
+                </div>
+                <div class="TabBox">
+                    <div id="skill" class="skilltree tapemt">
+                        <div><i class="fas fa-laptop-code fa-3x"></i>
+                            <div class="txt">Coding</div>
+                        </div>
+                        <div style="opacity: 0;"></div>
+                        <div><i class="fas fa-pen-nib fa-3x"></i>
+                            <div class="txt">Drawing</div>
+                        </div>
+                        <div><i class="fab fa-adobe fa-4x"></i>
+                            <div class="txt">Adobe</div>
+                        </div>
+                        <div style="opacity: 0;"></div>
+                        <div><i class="fab fa-html5 fa-4x"></i>
+                            <div class="txt">HTML</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><i class="fab fa-java fa-4x"></i>
+                            <div class="txt">JAVA</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div>LIVE2D
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><img src="img/AE.png">
+                            <div class="txt">After Effect</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><img src="img/PR.png">
+                            <div class="txt">Premiere</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><i class="fab fa-css3-alt fa-4x"></i>
+                            <div class="txt">CSS</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><i class="fab fa-python fa-4x"></i>
+                            <div class="txt">Python</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div>CSP
+                            <div class="txt">Clip Studio Paint</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><img src="img/AI.png">
+                            <div class="txt">Illustrator</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><img src="img/PS.png">
+                            <div class="txt">Photoshop</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div><i class="fab fa-js fa-4x"></i>
+                            <div class="txt">JavaScript</div>
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div style="opacity: 0;"></div>
+                        <div style="opacity: 0;"></div>
+                        <div><img src="img/XD.png">
+                            <div class="starcon"><i class="fas fa-star fa-2x"></i></div>
+                        </div>
+                        <div style="opacity: 0;"></div>
+                    </div>
+
+                    <div id="experience" class="tapemt experience" style="display:none">
+                        <div class="timeline"></div>
+                        <div class="timetextbox">
+                            <div>2010</div>
+                            <div>2013</div>
+                            <div>2014-2018</div>
+                            <div>2015/2016</div>
+                            <div>2014</div>
+                            <div>2017</div>
+                            <div>2018-2022</div>
+                        </div>
+                        <div class="textbox">
+                            <div>
+                                <h1>開始學習繪圖</h1>
+                                <p>畫風為日系風格，在社交軟體定時更時小漫畫</p>
+                            </div>
+                            <div>
+                                <h1>開始學習編程</h1>
+                                <p>認識基本的JAVA、PYTHON、C和C++﹔MySQL﹔HTML、CSS、JavaScript和JQuery</p>
+                            </div>
+                            <div>
+                                <h1>加入校內的Stage Management Team</h1>
+                                <p>擔任多次校內活動的後台人員，校內戲劇節的舞台監督</p>
+                            </div>
+                            <div>
+                                <h1>參加香港學校戲劇節 擔任監製、舞台監督</h1>
+                                <p>在比賽獲得多項獎狀，有幸被邀請參與香港學校戲劇節的公開演出</p>
+                            </div>
+                            <div>
+                                <h1>參加JA學生營商體驗計劃 擔任設計師</h1>
+                                <p>為日程本繪製內頁</p>
+                            </div>
+                            <div>
+                                <h1>加入校內的Campus TV</h1>
+                                <p>參與校內活動的拍攝</p>
+                            </div>
+                            <div>
+                                <h1>香港理工大學 電子計算學系 學生</h1>
+                                <p>BSc(Hons) in Information Technology</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popchanging">
+        <div class="popchangingcontent">
+            <i class="fas fa-window-close fa-4x" style="position: absolute;right:-5px;top:-9px;color:#707070;"></i>
+        </div>
+    </div>
+
+
+
+    <div class="btncontainer">
+        <div id="btncloth"><i class="fas fa-tshirt fa-4x"></i>
+            <div class="txt">Outfit<br>Design</div>
+        </div>
+        <div id="btnuser"><i class="fas fa-user fa-4x"></i>
+            <div class="txt">About Me</div>
+        </div>
+        <div><i class="fas fa-envelope fa-4x"></i>
+            <div class="txt">Contact Me</div>
+        </div>
+        <div><i class="fab fa-instagram fa-4x"></i>
+            <div class="txt">Instagram</div>
+        </div>
+    </div>
+
+    <img class="character" src="tenor.gif">
+    <div class="station" id="station1" style="left:250px;top:400px;"></div>
+    <div class="stationtext" id="stationtext1" style="left:250px;top:460px;">start</div>
+    <div class="station" id="station2" style="left:650px;top:500px;"></div>
+    <div class="stationtext" id="stationtext2" style="left:650px;top:560px;">web</div>
+    <div class="station" id="station3" style="left:1050px;top:400px;"></div>
+    <div class="stationtext" id="stationtext3" style="left:1050px;top:460px;">drawings</div>
+    <div class="station" id="station4" style="left:1450px;top:500px;"></div>
+    <div class="stationtext" id="stationtext4" style="left:1450px;top:560px;">video</div>
+
+    <div class="box">
+        <div class="background">
+            <div class="xlarge circle" style="left:-200px;top:300px;"></div>
+            <div class="large circle" style="left:1700px;top:800;"></div>
+            <div class="medium circle" style="left: 300px;top:-200px;"></div>
+            <div class="medium circle" style="left:1000px;top:500px;"></div>
+            <div class="small circle" style="left:1200;top:80px;"></div>
+            <div class="small circle" style="left:700px;top:160px;"></div>
+            <div class="small circle" style="left:1500px;top:400px;"></div>
+            <div class="xsmall circle" style="left:400px;top:600px;"></div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    function Swtap(evt, emtName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("tapemt");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" darkgrey", "");
+        }
+        document.getElementById(emtName).style.display = "flex";
+        evt.currentTarget.className += " darkgrey";
+    }
+</script>
+
+</html>
